@@ -44,6 +44,6 @@
             }
         }
 
-        public static void RefreshModel() => model = new BangumiModel();       
+        public static void RefreshModel() => model = new BangumiModel();
     }
 }
