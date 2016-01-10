@@ -1,0 +1,33 @@
+﻿<Window x:Class="BangumiSS.View.W新番"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BangumiSS.View"
+        mc:Ignorable="d"
+         Title="{Binding Title}" Height="258.084" Width="434" WindowStartupLocation="CenterOwner" PreviewKeyDown="Window_PreviewKeyDown" Loaded="Window_Loaded">
+    <Grid>
+        <Button Command="{Binding OK}" x:Name="B_确定" Content="确定" Margin="0,0,65,10" VerticalAlignment="Bottom" Width="40" Height="20" HorizontalAlignment="Right" IsDefault="True"/>
+        <Button Command="{Binding Cancel}" Content="取消" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="40" IsCancel="True" Height="20" Click="Button_Click"/>
+        <StackPanel HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
+            <Label Content="名称" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <Label Content="字幕组" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <Label Content="标识" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <Label Content="关键词" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <Label Content="目录" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <Label Content="进度" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <Label Content="计数" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <Label Content="完结" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        </StackPanel>
+        <StackPanel x:Name="SP_TB" HorizontalAlignment="Stretch" Margin="60,10,20,0" VerticalAlignment="Top">
+            <ComboBox IsEditable="True" x:Name="CB_名称"  VerticalAlignment="Top" Height="23" Margin="0,1" DisplayMemberPath="译名" Text="{Binding Anime.番组.译名}" ItemsSource="{Binding BgmList}" SelectedItem="{Binding SelectedBgm,Mode=OneWayToSource}"/>
+            <TextBox x:Name="TB_字幕组" Height="23" TextWrapping="Wrap" Text="{Binding Anime.字幕组}" VerticalAlignment="Top" Margin="0,1"/>
+            <TextBox x:Name="TB_标识" Height="23" TextWrapping="Wrap" Text="{Binding Anime.标识}" VerticalAlignment="Top" Margin="0,1"/>
+            <TextBox x:Name="TB_关键词" Height="23" TextWrapping="Wrap" Text="{Binding Anime.关键词}" VerticalAlignment="Top" Margin="0,1"/>
+            <TextBox x:Name="TB_目录" Height="23" TextWrapping="Wrap" Text="{Binding Anime.目录}" VerticalAlignment="Top" Margin="0,1"/>
+            <TextBox x:Name="TB_进度" Height="23" TextWrapping="Wrap" Text="{Binding Anime.进度}" VerticalAlignment="Top" Margin="0,1"/>
+            <TextBox x:Name="TB_计数" Height="23" TextWrapping="Wrap" Text="{Binding Anime.计数}" VerticalAlignment="Top" Margin="0,1"/>
+            <CheckBox x:Name="CB_完结"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5" IsChecked="{Binding Anime.完结}"/>
+        </StackPanel>
+    </Grid>
+</Window>

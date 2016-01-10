@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BangumiSS.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="扩展名" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.mp4|.mkv</Value>
+    </Setting>
+    <Setting Name="路径格式" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E:\|\d{4}.\d{2}月番</Value>
+    </Setting>
+    <Setting Name="动漫花园RSS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://dmhy.dandanplay.com/topics/rss/rss.xml</Value>
+    </Setting>
+    <Setting Name="默认RSS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DMHY</Value>
+    </Setting>
+    <Setting Name="上次更新" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">09/16/2014 08:24:13</Value>
+    </Setting>
+    <Setting Name="上次搜索" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="新番匹配" Type="System.String" Scope="User">
+      <Value Profile="(Default)">(.*)</Value>
+    </Setting>
+    <Setting Name="启动Top" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="启动Left" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="完结目录" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E:\完结</Value>
+    </Setting>
+    <Setting Name="Width" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">470</Value>
+    </Setting>
+    <Setting Name="Height" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">520</Value>
+    </Setting>
+    <Setting Name="动漫花园搜索" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://dmhy.dandanplay.com/topics/list?keyword=</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

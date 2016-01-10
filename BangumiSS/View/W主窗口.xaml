@@ -1,0 +1,100 @@
+﻿<Window x:Class="BangumiSS.View.W主窗口"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BangumiSS.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+      Title="新番" x:Name="win" Top="{Binding Top,Mode=TwoWay}" Left="{Binding Left,Mode=TwoWay}" Height="{Binding Height,Mode=TwoWay}" Width="{Binding Width,Mode=TwoWay}" MinWidth="430" MinHeight="100" PreviewKeyDown="Window_PreviewKeyDown">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding WinClose}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding ScanFiles}" CommandParameter="{Binding ElementName=win}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Window.Resources>
+
+    </Window.Resources>
+    <Grid>
+        <ListView x:Name="LV_新番" SelectedItem="{Binding Selected}" ItemsSource="{Binding AniList}" Margin="0,48,0,0" BorderThickness="2" Foreground="White">
+            <ListView.Background>
+                <SolidColorBrush Color="{DynamicResource Back}"/>
+            </ListView.Background>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding OpenFile}" CommandParameter="{Binding ElementName=LV_新番}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="定位文件" Command="{Binding  LocateFile }"/>
+                    <MenuItem Header="进度更新" Command="{Binding AddProgress}"/>
+                    <MenuItem Header="编辑" Command="{Binding Edit}" CommandParameter="{Binding ElementName=win}"/>
+                    <MenuItem Header="复制名称" Command="{Binding CopyName}"/>
+                    <MenuItem Header="搜索" Command="{Binding Search}"/>
+                    <Separator/>
+                    <MenuItem Header="查看详细" Command="{Binding ShowDetails}"/>
+                    <MenuItem Header="更新信息" Command="{Binding UpdateInfo}"/>
+                    <MenuItem Header="Bangumi" Command="{Binding VisitBgm}"/>
+                    <MenuItem Header="官网" Command="{Binding VisitHP}"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="130" Header="名称" DisplayMemberBinding="{Binding 番组.译名}"/>
+                    <GridViewColumn Header="进度">
+                        <GridViewColumn.DisplayMemberBinding>
+                            <MultiBinding StringFormat="{}{0:D2} / {1:00.#}">
+                                <Binding Path="进度" Mode="OneWay"/>
+                                <Binding Path="计数"/>
+                            </MultiBinding>
+                        </GridViewColumn.DisplayMemberBinding>
+                    </GridViewColumn>
+                    <GridViewColumn Header="话数" DisplayMemberBinding="{Binding 番组.话数,Mode=OneWay}"/>
+                    <GridViewColumn Header="更新时间" DisplayMemberBinding="{Binding 完成时间,StringFormat='MM/dd HH:mm'}"/>
+                    <GridViewColumn Width="120" Header="字幕组" DisplayMemberBinding="{Binding 字幕组}"/>
+                </GridView>
+            </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="{Binding 状态}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF143E87"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF235FC7"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <Menu Margin="0" VerticalAlignment="Top" BorderBrush="#FF828790" BorderThickness="2" Foreground="#FFE6E6E6" Background="Black">
+            <MenuItem Header="管理" Command="{Binding Manage}"/>
+            <MenuItem Header="重新扫描" Command="{Binding ScanFiles}" CommandParameter="{Binding ElementName=win}"/>
+            <MenuItem Header="下载更新" Command="{Binding Update}"/>
+            <MenuItem Header="音乐" Command="{Binding MusicInfo}"/>
+            <Label Background="#FF828790" Height="21" Width="2" IsEnabled="False" />
+            <MenuItem Header="进度更新" Command="{Binding AddProgress}"/>
+            <MenuItem Header="完结" Command="{Binding Finish}"/>
+            <MenuItem Header="编辑" Command="{Binding Edit}" CommandParameter="{Binding ElementName=win}"/>
+            <MenuItem Header="定位文件" Command="{Binding LocateFile}"/>
+            <MenuItem Header="退出" Click="MenuItem_Click"/>
+        </Menu>
+        <TextBox x:Name="TB_搜索" Height="23"  TextWrapping="Wrap" Text="{Binding KeyWord}" VerticalAlignment="Top" Margin="0,27,140,0" BorderBrush="#FF828790" BorderThickness="2,0,2,2" Foreground="White">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding Search}"/>
+            </TextBox.InputBindings>
+            <TextBox.Background>
+                <SolidColorBrush Color="{DynamicResource Back}"/>
+            </TextBox.Background>
+        </TextBox>
+        <ComboBox x:Name="CB_搜索" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="100" Height="23" Margin="0,27,40,0" BorderBrush="#FF828790" BorderThickness="0,0,0,2" Foreground="Black" Background="{x:Null}">
+            <ComboBoxItem Content="动漫花园" IsSelected="True"/>
+        </ComboBox>
+        <Button x:Name="B_搜索" Content="搜索"  VerticalAlignment="Top" Width="40" Command="{Binding Search}" Height="23" HorizontalAlignment="Right" Margin="0,27,0,0" BorderBrush="#FF828790" BorderThickness="2,0,2,2"/>
+    </Grid>
+</Window>

@@ -1,0 +1,19 @@
+﻿<Window x:Class="BangumiSS.View.W音乐"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BangumiSS.View"
+        mc:Ignorable="d"
+        Title="音乐信息" Height="520" Width="460" Closed="Window_Closed">
+    <Grid>
+        <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" ItemsSource="{Binding List,Mode=OneWay}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="名称" Binding="{Binding 译名,Mode=TwoWay}"/>
+                <DataGridTextColumn Header="OP" Width="70" Binding="{Binding OP,Mode=TwoWay}"/>
+                <DataGridTextColumn Header="ED" Width="70" Binding="{Binding ED,Mode=TwoWay}"/>
+                <DataGridTextColumn Header="其他信息" Binding="{Binding 音乐信息,Mode=TwoWay}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
